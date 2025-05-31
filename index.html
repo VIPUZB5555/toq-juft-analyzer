@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Son Analizi</title>
+</head>
+<body>
+    <h1>Son haqida ma'lumot</h1>
+    <form method="post">
+        <input type="number" name="son" placeholder="Son kiriting">
+        <button type="submit">Hisobla</button>
+    </form>
+
+    {% if natija %}
+    <h2>Natijalar:</h2>
+    <p><strong>Juft sonlar:</strong> {{ natija['juft'] }}</p>
+    <p><strong>Toq sonlar:</strong> {{ natija['toq'] }}</p>
+    <p><strong>Kopaytuvchilar:</strong> {{ natija['kopaytuvchilar'] }}</p>
+    {% endif %}
+</body>
+</html>
