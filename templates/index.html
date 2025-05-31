@@ -3,142 +3,154 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Rustamov Og'abekning 3D Web Ilovasi</title>
+<title>Toq va Juft Son Aniqlovchi</title>
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
 
-  * {
-    margin: 0; padding: 0; box-sizing: border-box;
-  }
-
-  body, html {
-    height: 100%;
+  body {
     font-family: 'Poppins', sans-serif;
-    background: linear-gradient(270deg, #667eea, #764ba2, #6a11cb, #2575fc);
-    background-size: 800% 800%;
-    animation: gradientBG 15s ease infinite;
-    color: white;
-    overflow-x: hidden;
-    perspective: 1000px; /* 3D perspektiva */
-  }
-
-  @keyframes gradientBG {
-    0%{background-position:0% 50%;}
-    50%{background-position:100% 50%;}
-    100%{background-position:0% 50%;}
-  }
-
-  .banner {
-    height: 100vh;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    margin: 0; padding: 0;
+    color: #fff;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
+  }
+
+  header {
+    width: 100%;
+    background: #5a4dbd;
+    padding: 30px 20px;
     text-align: center;
-    padding: 0 20px;
-    perspective: 1200px;
+    font-size: 2.8rem;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    animation: glow 2s ease-in-out infinite alternate;
   }
 
-  .banner h1 {
-    font-size: 4rem;
-    letter-spacing: 0.1em;
-    color: #f9d71c;
-    font-weight: 900;
-    text-shadow: 0 0 10px #f9d71c, 0 0 30px #f9d71c;
-    transform-style: preserve-3d;
-    animation: float3D 4s ease-in-out infinite;
-    cursor: default;
-    user-select: none;
+  @keyframes glow {
+    0% {text-shadow: 0 0 5px #fff, 0 0 15px #a29bfe, 0 0 30px #6c5ce7;}
+    100% {text-shadow: 0 0 10px #fff, 0 0 25px #a29bfe, 0 0 50px #6c5ce7;}
   }
 
-  /* 3D float animatsiyasi */
-  @keyframes float3D {
-    0%, 100% {
-      transform: rotateX(0deg) rotateY(0deg) translateZ(0);
-      text-shadow: 0 0 10px #f9d71c, 0 0 30px #f9d71c;
-    }
-    50% {
-      transform: rotateX(10deg) rotateY(10deg) translateZ(20px);
-      text-shadow: 0 0 20px #fff, 0 0 40px #f9d71c;
-    }
+  .container {
+    background: rgba(255,255,255,0.15);
+    margin: 40px 20px;
+    padding: 25px 30px;
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(255,255,255,0.3);
+    max-width: 450px;
+    width: 100%;
+    backdrop-filter: blur(10px);
   }
 
-  .banner p {
-    margin-top: 20px;
-    font-size: 1.5rem;
-    opacity: 0.85;
-    text-shadow: 0 0 10px rgba(0,0,0,0.3);
-    animation: fadeInUp 2s forwards;
-    animation-delay: 1s;
+  label {
+    display: block;
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+    font-weight: 600;
+    color: #e0e0e0;
   }
 
-  .btn {
-    margin-top: 40px;
-    background: #f9d71c;
+  input[type="number"] {
+    width: 100%;
+    padding: 12px;
+    border-radius: 10px;
     border: none;
-    padding: 15px 40px;
+    font-size: 1.2rem;
+    outline: none;
+    transition: box-shadow 0.3s ease;
+  }
+
+  input[type="number"]:focus {
+    box-shadow: 0 0 12px #a29bfe;
+    background: #fff;
+    color: #333;
+  }
+
+  button {
+    margin-top: 20px;
+    width: 100%;
+    padding: 14px;
+    background: #6c5ce7;
+    border: none;
+    border-radius: 12px;
     font-size: 1.3rem;
     font-weight: 700;
-    border-radius: 30px;
+    color: white;
     cursor: pointer;
-    box-shadow: 0 8px 15px rgba(249, 215, 28, 0.4);
-    transition: all 0.3s ease;
-    color: #333;
-    animation: fadeInUp 2s forwards;
-    animation-delay: 1.6s;
-    transform-style: preserve-3d;
-    perspective: 800px;
-  }
-  .btn:hover {
-    transform: scale(1.1) translateZ(30px);
-    box-shadow: 0 12px 25px rgba(249, 215, 28, 0.7);
+    transition: background 0.3s ease;
   }
 
-  /* Fade in up animation */
-  @keyframes fadeInUp {
-    from {
-      opacity: 0;
-      transform: translateY(40px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
+  button:hover {
+    background: #341f97;
   }
 
-  /* Responsive */
-  @media (max-width: 600px) {
-    .banner h1 {
-      font-size: 2.5rem;
-    }
-    .banner p {
-      font-size: 1.1rem;
-    }
-    .btn {
-      font-size: 1rem;
-      padding: 12px 30px;
-    }
+  .result {
+    margin-top: 30px;
+    padding: 20px;
+    background: rgba(0,0,0,0.3);
+    border-radius: 15px;
+    font-size: 1.2rem;
+    line-height: 1.6;
+    animation: fadeIn 1s ease forwards;
+  }
+
+  @keyframes fadeIn {
+    from {opacity: 0; transform: translateY(20px);}
+    to {opacity: 1; transform: translateY(0);}
+  }
+
+  .highlight {
+    color: #ffeaa7;
+    font-weight: 700;
   }
 </style>
 </head>
 <body>
 
-<section class="banner" id="banner">
-  <h1>Rustamov Og'abekning <span>Web Ilovasi</span></h1>
-  <p>Siz uchun yaratilgan mukammal interaktiv sayt!</p>
-  <button class="btn" onclick="alert('Salom, Rustamov Og\'abek!')">Ismni ko‘rsat</button>
-</section>
+<header>Son Yozish</header>
+
+<div class="container">
+  <label for="son">Iltimos, bir butun son kiriting:</label>
+  <input type="number" id="son" placeholder="Masalan: 10" min="1" />
+  <button id="hisoblaBtn">Hisoblash</button>
+
+  <div id="natija" class="result" style="display:none;"></div>
+</div>
 
 <script>
-  // Banner ustida sichqoncha harakatiga 3D effekt
-  const banner = document.getElementById('banner');
-  banner.addEventListener('mousemove', (e) => {
-    const x = (window.innerWidth / 2 - e.pageX) / 25;
-    const y = (window.innerHeight / 2 - e.pageY) / 25;
-    banner.style.transform = `rotateY(${x}deg) rotateX(${y}deg)`;
-  });
-  banner.addEventListener('mouseleave', () => {
-    banner.style.transform = `rotateY(0deg) rotateX(0deg)`;
+  const btn = document.getElementById('hisoblaBtn');
+  const natijaDiv = document.getElementById('natija');
+  const sonInput = document.getElementById('son');
+
+  btn.addEventListener('click', () => {
+    const son = parseInt(sonInput.value);
+    if (isNaN(son) || son < 1) {
+      alert('Iltimos, 1 dan katta butun son kiriting!');
+      return;
+    }
+
+    let juftlar = [];
+    let toqlar = [];
+
+    for(let i = 1; i <= son; i++) {
+      if (i % 2 === 0) juftlar.push(i);
+      else toqlar.push(i);
+    }
+
+    let natijaMatn = `
+      <p><span class="highlight">Juft sonlar soni:</span> ${juftlar.length}</p>
+      <p><span class="highlight">Juft sonlar ro'yxati:</span> ${juftlar.join(', ') || 'Yo\'q'}</p>
+      <p><span class="highlight">Toq sonlar soni:</span> ${toqlar.length}</p>
+      <p><span class="highlight">Toq sonlar ro'yxati:</span> ${toqlar.join(', ') || 'Yo\'q'}</p>
+    `;
+
+    natijaDiv.innerHTML = natijaMatn;
+    natijaDiv.style.display = 'block';
   });
 </script>
 
