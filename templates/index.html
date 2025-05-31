@@ -1,104 +1,146 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="uz">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Toq va Juft Sonlar</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-            background: #f9f9f9;
-            color: #333;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-        }
-        .container {
-            max-width: 500px;
-            background: white;
-            margin: auto;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-            flex-grow: 1;
-        }
-        h1 {
-            text-align: center;
-            color: #007BFF;
-        }
-        label, input, button {
-            display: block;
-            width: 100%;
-            margin-bottom: 15px;
-            font-size: 18px;
-        }
-        input {
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 6px;
-            box-sizing: border-box;
-        }
-        button {
-            background-color: #007BFF;
-            color: white;
-            border: none;
-            padding: 12px;
-            border-radius: 6px;
-            cursor: pointer;
-            font-weight: bold;
-        }
-        button:hover {
-            background-color: #0056b3;
-        }
-        .result {
-            background: #e9f0ff;
-            padding: 15px;
-            border-radius: 6px;
-        }
-        footer {
-            text-align: center;
-            padding: 10px 0;
-            color: #666;
-            font-size: 14px;
-        }
-        @media only screen and (max-width: 600px) {
-            body {
-                margin: 10px;
-            }
-            .container {
-                padding: 15px;
-            }
-            label, input, button {
-                font-size: 16px;
-            }
-            .result {
-                font-size: 14px;
-            }
-        }
-    </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Rustamov Og'abekning 3D Web Ilovasi</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap');
+
+  * {
+    margin: 0; padding: 0; box-sizing: border-box;
+  }
+
+  body, html {
+    height: 100%;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(270deg, #667eea, #764ba2, #6a11cb, #2575fc);
+    background-size: 800% 800%;
+    animation: gradientBG 15s ease infinite;
+    color: white;
+    overflow-x: hidden;
+    perspective: 1000px; /* 3D perspektiva */
+  }
+
+  @keyframes gradientBG {
+    0%{background-position:0% 50%;}
+    50%{background-position:100% 50%;}
+    100%{background-position:0% 50%;}
+  }
+
+  .banner {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 0 20px;
+    perspective: 1200px;
+  }
+
+  .banner h1 {
+    font-size: 4rem;
+    letter-spacing: 0.1em;
+    color: #f9d71c;
+    font-weight: 900;
+    text-shadow: 0 0 10px #f9d71c, 0 0 30px #f9d71c;
+    transform-style: preserve-3d;
+    animation: float3D 4s ease-in-out infinite;
+    cursor: default;
+    user-select: none;
+  }
+
+  /* 3D float animatsiyasi */
+  @keyframes float3D {
+    0%, 100% {
+      transform: rotateX(0deg) rotateY(0deg) translateZ(0);
+      text-shadow: 0 0 10px #f9d71c, 0 0 30px #f9d71c;
+    }
+    50% {
+      transform: rotateX(10deg) rotateY(10deg) translateZ(20px);
+      text-shadow: 0 0 20px #fff, 0 0 40px #f9d71c;
+    }
+  }
+
+  .banner p {
+    margin-top: 20px;
+    font-size: 1.5rem;
+    opacity: 0.85;
+    text-shadow: 0 0 10px rgba(0,0,0,0.3);
+    animation: fadeInUp 2s forwards;
+    animation-delay: 1s;
+  }
+
+  .btn {
+    margin-top: 40px;
+    background: #f9d71c;
+    border: none;
+    padding: 15px 40px;
+    font-size: 1.3rem;
+    font-weight: 700;
+    border-radius: 30px;
+    cursor: pointer;
+    box-shadow: 0 8px 15px rgba(249, 215, 28, 0.4);
+    transition: all 0.3s ease;
+    color: #333;
+    animation: fadeInUp 2s forwards;
+    animation-delay: 1.6s;
+    transform-style: preserve-3d;
+    perspective: 800px;
+  }
+  .btn:hover {
+    transform: scale(1.1) translateZ(30px);
+    box-shadow: 0 12px 25px rgba(249, 215, 28, 0.7);
+  }
+
+  /* Fade in up animation */
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(40px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Responsive */
+  @media (max-width: 600px) {
+    .banner h1 {
+      font-size: 2.5rem;
+    }
+    .banner p {
+      font-size: 1.1rem;
+    }
+    .btn {
+      font-size: 1rem;
+      padding: 12px 30px;
+    }
+  }
+</style>
 </head>
 <body>
-    <div class="container">
-        <h1>Toq va Juft Sonlar</h1>
-        <form method="POST">
-            <label for="son">Iltimos, bir butun son kiriting:</label>
-            <input type="number" id="son" name="son" required min="1" value="{{ son if son else '' }}" />
-            <button type="submit">Hisoblash</button>
-        </form>
 
-        {% if son %}
-        <div class="result">
-            <p><strong>Juft sonlar soni:</strong> {{ juftlar|length }}</p>
-            <p><strong>Juft sonlar ro'yxati:</strong> {{ juftlar|join(', ') }}</p>
-            <p><strong>Toq sonlar soni:</strong> {{ toqlar|length }}</p>
-            <p><strong>Toq sonlar ro'yxati:</strong> {{ toqlar|join(', ') }}</p>
-        </div>
-        {% endif %}
-    </div>
+<section class="banner" id="banner">
+  <h1>Rustamov Og'abekning <span>Web Ilovasi</span></h1>
+  <p>Siz uchun yaratilgan mukammal interaktiv sayt!</p>
+  <button class="btn" onclick="alert('Salom, Rustamov Og\'abek!')">Ismni ko‘rsat</button>
+</section>
 
-    <footer>
-        Rustamov Og'abekning web ilovasi
-    </footer>
+<script>
+  // Banner ustida sichqoncha harakatiga 3D effekt
+  const banner = document.getElementById('banner');
+  banner.addEventListener('mousemove', (e) => {
+    const x = (window.innerWidth / 2 - e.pageX) / 25;
+    const y = (window.innerHeight / 2 - e.pageY) / 25;
+    banner.style.transform = `rotateY(${x}deg) rotateX(${y}deg)`;
+  });
+  banner.addEventListener('mouseleave', () => {
+    banner.style.transform = `rotateY(0deg) rotateX(0deg)`;
+  });
+</script>
+
 </body>
 </html>
