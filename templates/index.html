@@ -2,64 +2,89 @@
 <html lang="uz">
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Sizning Saytingiz</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Toq va Juft Sonlar</title>
     <style>
-        /* Umumiy tanlash */
         body {
             font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 20px;
-            font-size: 18px;
-            background-color: #f5f5f5;
-        }
-
-        h1 {
+            margin: 20px;
+            background: #f9f9f9;
             color: #333;
         }
-
-        /* Katta ekranlar uchun */
         .container {
-            max-width: 800px;
-            margin: auto;
+            max-width: 500px;
             background: white;
+            margin: auto;
             padding: 20px;
-            border-radius: 8px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
         }
-
-        /* Mobil uchun responsivlik */
+        h1 {
+            text-align: center;
+            color: #007BFF;
+        }
+        label, input, button {
+            display: block;
+            width: 100%;
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+        input {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            box-sizing: border-box;
+        }
+        button {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .result {
+            background: #e9f0ff;
+            padding: 15px;
+            border-radius: 6px;
+        }
         @media only screen and (max-width: 600px) {
             body {
-                padding: 10px;
-                font-size: 16px;
+                margin: 10px;
             }
             .container {
                 padding: 15px;
-                margin: 10px;
             }
-        }
-
-        /* Tugmalarni kattalashtirish */
-        button {
-            font-size: 18px;
-            padding: 10px 15px;
-            border: none;
-            border-radius: 5px;
-            background-color: #007BFF;
-            color: white;
-            cursor: pointer;
-        }
-
-        button:hover {
-            background-color: #0056b3;
+            label, input, button {
+                font-size: 16px;
+            }
+            .result {
+                font-size: 14px;
+            }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Salom, dunyo!</h1>
-        <p>Bu sayt mobil qurilmalarga moslashgan.</p>
-        <button>Bosish uchun tugma</button>
+        <h1>Toq va Juft Sonlar</h1>
+        <form method="POST">
+            <label for="son">Iltimos, bir butun son kiriting:</label>
+            <input type="number" id="son" name="son" required min="1" value="{{ son if son else '' }}" />
+            <button type="submit">Hisoblash</button>
+        </form>
+
+        {% if son %}
+        <div class="result">
+            <p><strong>Juft sonlar soni:</strong> {{ juftlar|length }}</p>
+            <p><strong>Juft sonlar ro'yxati:</strong> {{ juftlar|join(', ') }}</p>
+            <p><strong>Toq sonlar soni:</strong> {{ toqlar|length }}</p>
+            <p><strong>Toq sonlar ro'yxati:</strong> {{ toqlar|join(', ') }}</p>
+        </div>
+        {% endif %}
     </div>
 </body>
 </html>
