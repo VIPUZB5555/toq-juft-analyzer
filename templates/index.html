@@ -108,11 +108,42 @@
     color: #ffeaa7;
     font-weight: 700;
   }
+
+  /* Ism-familya 3D animatsiyasi */
+  footer {
+    margin-top: auto;
+    padding: 25px 10px;
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: 2px;
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+    perspective: 800px;
+  }
+
+  .name-3d {
+    display: inline-block;
+    color: #6c5ce7;
+    text-transform: uppercase;
+    animation: rotate3d 5s linear infinite;
+    text-shadow:
+      1px 1px 2px #341f97,
+      2px 2px 4px #5a4dbd,
+      0 0 10px #a29bfe,
+      0 0 20px #6c5ce7;
+  }
+
+  @keyframes rotate3d {
+    0%   {transform: rotateY(0deg);}
+    50%  {transform: rotateY(180deg);}
+    100% {transform: rotateY(360deg);}
+  }
 </style>
 </head>
 <body>
 
-<header>Son Yozish</header>
+<header>Toq va Juft Aniqlovchi</header>
 
 <div class="container">
   <label for="son">Iltimos, bir butun son kiriting:</label>
@@ -121,6 +152,10 @@
 
   <div id="natija" class="result" style="display:none;"></div>
 </div>
+
+<footer>
+  <span class="name-3d">Rustamov Og'abekning web ilovasi</span>
+</footer>
 
 <script>
   const btn = document.getElementById('hisoblaBtn');
